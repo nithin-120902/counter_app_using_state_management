@@ -10,7 +10,8 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String value = context.watch<Counter>().counter.toString();
+    String value= context.watch<Counter>().answer; 
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -23,10 +24,11 @@ class MyHomePage extends StatelessWidget {
             const Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              value,
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+            SizedBox(height: 10,),
+            value =="loading" ? SizedBox(width:50,child: LinearProgressIndicator()) : Text(
+                    value,
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  ),
           ],
         ),
       ),
